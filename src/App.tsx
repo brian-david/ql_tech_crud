@@ -8,7 +8,7 @@ function App() {
   return (
     <Routes>
       <Route path="/ql_tech_crud" element={<HomePage />} />
-      <Route path="/login" element={<LoginPage />} />
+      <Route path="/ql_tech_crud/login" element={<LoginPage />} />
     </Routes>
   );
 }
