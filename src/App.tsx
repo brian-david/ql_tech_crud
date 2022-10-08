@@ -1,9 +1,16 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import HomePage from "./pages/home-page/HomePage";
+import LoginPage from "./pages/login-page/LoginPage";
 
 function App() {
-  return <h1>Archi Client</h1>;
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/login" element={<LoginPage />} />
+    </Routes>
+  );
 }
 
 export default App;
