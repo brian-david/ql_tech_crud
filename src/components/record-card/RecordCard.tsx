@@ -1,3 +1,5 @@
+import { Card, CardContent } from "@mui/material";
+
 type RecordCardProps = {
   image: string;
   title: string;
@@ -5,5 +7,9 @@ type RecordCardProps = {
 };
 
 export default function RecordCard(props: RecordCardProps) {
-  return <h1>this is a record card</h1>;
+  return (
+    <Card sx={{ minWidth: 275 }}>
+      <CardContent>{props.title}</CardContent>
+    </Card>
+  );
 }

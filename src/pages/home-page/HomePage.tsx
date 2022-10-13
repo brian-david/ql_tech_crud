@@ -1,5 +1,6 @@
 import { Box, Card, CardContent, Stack, Typography } from "@mui/material";
 import { useState } from "react";
+import RecordCard from "../../components/record-card/RecordCard";
 
 export default function HomePage() {
   const [buildingslist, setBuildingsList] = useState([
@@ -12,9 +13,7 @@ export default function HomePage() {
     <Stack spacing={2}>
       {buildingslist.map((building: string) => {
         return (
-          <Card sx={{ minWidth: 275 }}>
-            <CardContent>{building}</CardContent>
-          </Card>
+          <RecordCard image={""} title={building} architect={""} />
         );
       })}
     </Stack>
