@@ -1,6 +1,7 @@
-import { Box, Card, CardContent, Stack, Typography } from "@mui/material";
+import { Box, Card, CardContent, Fab, Stack, Typography } from "@mui/material";
 import { useState } from "react";
 import RecordCard from "../../components/record-card/RecordCard";
+import "./HomePage.scss";
 
 export default function HomePage() {
   const [buildingslist, setBuildingsList] = useState([
@@ -10,12 +11,15 @@ export default function HomePage() {
   ]);
 
   return (
-    <Stack spacing={2}>
-      {buildingslist.map((building: string) => {
-        return (
-          <RecordCard image={""} title={building} architect={""} />
-        );
-      })}
-    </Stack>
+    <>
+      <div className="container">
+        <Stack spacing={2}>
+          {buildingslist.map((building: string) => {
+            return <RecordCard image={""} title={building} architect={""} />;
+          })}
+        </Stack>
+      </div>
+      <Fab>+</Fab>
+    </>
   );
 }
