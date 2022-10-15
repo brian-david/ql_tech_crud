@@ -4,7 +4,8 @@ import RecordCard from "../../components/record-card/RecordCard";
 import { Building } from "../../types/Building";
 import "./HomePage.scss";
 import AddIcon from "@mui/icons-material/Add";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import DetailsModal from "../../components/details-modal/DetailsModal";
 
 const buildings = [
   {
@@ -32,8 +33,15 @@ const buildings = [
 ];
 
 export default function HomePage() {
-  const [detailsModal, setDetailsModal] = useState<boolean>(false);
-  const [buildingDetails, setBuildingDetails] = useState<Building>();
+  const [showDetailsModal, setShowDetailsModal] = useState<boolean>(false);
+  const [selectedBuilding, setSelectedBuilding] = useState<Building>();
+
+  useEffect(() => {
+    console.log("selected building", selectedBuilding);
+    if (selectedBuilding !== undefined) {
+      setShowDetailsModal(true);
+    }
+  }, [selectedBuilding]);
 
   return (
     <>
@@ -46,6 +54,7 @@ export default function HomePage() {
               return (
                 <Grid item xs={12} sm={6} md={4}>
                   <RecordCard
+                    setSelected={setSelectedBuilding}
                     building={{
                       id: item.id,
                       architectId: item.architectId,
@@ -69,6 +78,11 @@ export default function HomePage() {
           <AddIcon />
         </Fab>
       </Container>
+      <DetailsModal
+        open={showDetailsModal}
+        onclose={() => setShowDetailsModal(false)}
+        building={selectedBuilding}
+      />
     </>
   );
 }

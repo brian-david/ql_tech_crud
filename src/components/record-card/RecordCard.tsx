@@ -12,11 +12,15 @@ import { Building } from "../../types/Building";
 
 type RecordCardProps = {
   building: Building;
+  setSelected: (building: Building) => void;
 };
 
 export default function RecordCard(props: RecordCardProps) {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card
+      sx={{ maxWidth: 345 }}
+      onClick={() => props.setSelected(props.building)}
+    >
       <CardActionArea>
         <CardMedia
           component="img"
@@ -33,11 +37,6 @@ export default function RecordCard(props: RecordCardProps) {
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          more info
-        </Button>
-      </CardActions>
     </Card>
   );
 }
