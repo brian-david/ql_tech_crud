@@ -1,6 +1,6 @@
-import { Grid, Modal, Paper, TextField } from "@mui/material";
+import { Button, Modal, TextField } from "@mui/material";
 import { Box } from "@mui/system";
-import { palette } from "@mui/system";
+import Grid from "@mui/material/Unstable_Grid2";
 
 type NewEntryModalProps = {
   open: boolean;
@@ -16,13 +16,14 @@ const style = {
   bgcolor: "#fff",
   boxShadow: 24,
   p: 4,
+  flexGrow: 1,
 };
 
 export default function NewEntryModal(props: NewEntryModalProps) {
   return (
     <Modal open={props.open} onClose={props.onclose}>
       <Box component="form" sx={style}>
-        <Grid container>
+        <Grid display="flex" justifyContent="center" container spacing={2}>
           <Grid md={6}>
             <TextField
               id="building-name"
@@ -65,6 +66,9 @@ export default function NewEntryModal(props: NewEntryModalProps) {
               variant="outlined"
             />
           </Grid>
+          <Button variant="contained" color="success">
+            Success
+          </Button>
         </Grid>
       </Box>
     </Modal>
