@@ -6,6 +6,7 @@ import "./HomePage.scss";
 import AddIcon from "@mui/icons-material/Add";
 import { useEffect, useState } from "react";
 import DetailsModal from "../../components/details-modal/DetailsModal";
+import NewEntryModal from "../../components/new-entry-modal/NewEntryModal";
 
 const buildings = [
   {
@@ -34,6 +35,7 @@ const buildings = [
 
 export default function HomePage() {
   const [showDetailsModal, setShowDetailsModal] = useState<boolean>(false);
+  const [showNewEntryModal, setShowNewEntryModal] = useState<boolean>(false);
   const [selectedBuilding, setSelectedBuilding] = useState<Building>();
 
   useEffect(() => {
@@ -71,6 +73,7 @@ export default function HomePage() {
           </Grid>
         </Container>
         <Fab
+          onClick={() => setShowNewEntryModal(true)}
           color="secondary"
           aria-label="add"
           sx={{ position: "absolute", bottom: "40px", right: "40px" }}
@@ -82,6 +85,10 @@ export default function HomePage() {
         open={showDetailsModal}
         onclose={() => setShowDetailsModal(false)}
         building={selectedBuilding}
+      />
+      <NewEntryModal
+        open={showNewEntryModal}
+        onclose={() => setShowNewEntryModal(false)}
       />
     </>
   );
