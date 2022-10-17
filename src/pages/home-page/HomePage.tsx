@@ -1,4 +1,10 @@
-import { Container, CssBaseline, Fab, Grid } from "@mui/material";
+import {
+  CircularProgress,
+  Container,
+  CssBaseline,
+  Fab,
+  Grid,
+} from "@mui/material";
 import NavBar from "../../components/nav-bar/NavBar";
 import RecordCard from "../../components/record-card/RecordCard";
 import { Building } from "../../types/Building";
@@ -54,27 +60,18 @@ export default function HomePage() {
 
   return (
     <>
-      <CssBaseline />
       <NavBar />
+      <CssBaseline />
       <Container>
         <Container sx={{ py: 8 }} maxWidth="md">
           <Grid container spacing={4}>
-            {temp_buildings.map((item) => {
+            {buildings.data?.users_buildings.map((item: any) => {
+              //console.log("ITEM -> ", item.building);
               return (
-                <Grid item xs={12} sm={6} md={4}>
-                  <RecordCard
-                    setSelected={setSelectedBuilding}
-                    building={{
-                      id: item.id,
-                      architectId: item.architectId,
-                      style: item.style,
-                      year: item.yearOfCompletion,
-                      place: item.place,
-                      name: item.name,
-                      description: item.descrcription,
-                    }}
-                  />
-                </Grid>
+                <RecordCard
+                  setSelected={setSelectedBuilding}
+                  building={item.building}
+                />
               );
             })}
           </Grid>

@@ -8,6 +8,7 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
+import { useEffect } from "react";
 import { Building } from "../../types/Building";
 
 type RecordCardProps = {
@@ -15,25 +16,25 @@ type RecordCardProps = {
   setSelected: (building: Building) => void;
 };
 
-export default function RecordCard(props: RecordCardProps) {
+export default function RecordCard(props: any) {
+  useEffect(() => {
+    console.log("RecordCard");
+    console.log("PROPS", props);
+  }, [props]);
+
   return (
     <Card
       sx={{ maxWidth: 345 }}
       onClick={() => props.setSelected(props.building)}
     >
       <CardActionArea>
-        <CardMedia
-          component="img"
-          height="140"
-          image={require("../../images/HAC_photo_by_Iwan_Baan_(2).jpg")}
-          alt="green iguana"
-        />
+        <CardMedia component="img" height="140" image={props.building.image} />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             {props.building.name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            architect: {props.building.architectId}
+            {/* architect: {props.building.architect.name} */}
           </Typography>
         </CardContent>
       </CardActionArea>

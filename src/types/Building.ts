@@ -1,9 +1,10 @@
 export type Building = {
   id: number;
-  architectId: number;
+  architect: { name: string };
   style: string;
   year: Date;
   place: string;
   name: string;
   description: string;
+  image: string;
 };

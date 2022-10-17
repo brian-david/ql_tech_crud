@@ -26,7 +26,7 @@ export default function NavBar() {
       >
         <Toolbar sx={{ flexWrap: 'wrap' }}>
           <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
-            Company name
+            Architecture
           </Typography>
           <Button href="#" variant="outlined" sx={{ my: 1, mx: 1.5 }}>
             Log out
