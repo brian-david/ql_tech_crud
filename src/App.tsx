@@ -10,24 +10,19 @@ import {
   HttpLink,
 } from "@apollo/client";
 
-const createApolloClient = () => {
-  return new ApolloClient({
-    link: new HttpLink({
-      uri: "https://emerging-macaw-66.hasura.app/v1/graphql",
-      headers: {
-        Authorization: `Bearer ${authToken}`,
-      },
-    }),
-    cache: new InMemoryCache(),
-  });
-};
+const client = new ApolloClient({
+  uri: "https://emerging-macaw-66.hasura.app/v1/graphql",
+  cache: new InMemoryCache(),
+});
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/login" element={<LoginPage />} />
-    </Routes>
+    <ApolloProvider client={client}>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+      </Routes>
+    </ApolloProvider>
   );
 }
 
