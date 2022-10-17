@@ -10,6 +10,7 @@ import DetailsModal from "../../components/details-modal/DetailsModal";
 import NewEntryModal from "../../components/new-entry-modal/NewEntryModal";
 import { BUILDINGS_QUERY } from "../../queries/getBuildings";
 import { useQuery } from "@apollo/client";
+import { flexbox } from "@mui/system";
 
 const temp_buildings = [
   {
@@ -56,9 +57,13 @@ export default function HomePage() {
   return (
     <>
       <NavBar />
-
-      <Container>
-        <Container sx={{ py: 8 }} maxWidth="md">
+      <Container sx={{ py: 8 }}>
+        {buildings.loading && (
+          <Grid container justifyContent="center" alignItems="center">
+            <CircularProgress />
+          </Grid>
+        )}
+        <Container maxWidth="md">
           <Grid container spacing={4}>
             {buildings.data?.users_buildings.map((item: any) => {
               //console.log("ITEM -> ", item.building);
@@ -75,7 +80,7 @@ export default function HomePage() {
         </Container>
         <Fab
           onClick={() => setShowNewEntryModal(true)}
-          color="secondary"
+          color="primary"
           aria-label="add"
           sx={{ position: "absolute", bottom: "40px", right: "40px" }}
         >
