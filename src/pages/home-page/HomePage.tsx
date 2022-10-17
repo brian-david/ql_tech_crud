@@ -7,8 +7,10 @@ import AddIcon from "@mui/icons-material/Add";
 import { useEffect, useState } from "react";
 import DetailsModal from "../../components/details-modal/DetailsModal";
 import NewEntryModal from "../../components/new-entry-modal/NewEntryModal";
+import { BUILDINGS_QUERY } from "../../queries/getBuildings";
+import { useQuery } from "@apollo/client";
 
-const buildings = [
+const temp_buildings = [
   {
     id: 1,
     architectId: 1,
@@ -37,6 +39,7 @@ export default function HomePage() {
   const [showDetailsModal, setShowDetailsModal] = useState<boolean>(false);
   const [showNewEntryModal, setShowNewEntryModal] = useState<boolean>(false);
   const [selectedBuilding, setSelectedBuilding] = useState<Building>();
+  const buildings = useQuery(BUILDINGS_QUERY);
 
   useEffect(() => {
     console.log("selected building", selectedBuilding);
@@ -45,6 +48,10 @@ export default function HomePage() {
     }
   }, [selectedBuilding]);
 
+  useEffect(() => {
+    console.log("fetched buildings", buildings.data);
+  }, [buildings.data]);
+
   return (
     <>
       <CssBaseline />
@@ -52,7 +59,7 @@ export default function HomePage() {
       <Container>
         <Container sx={{ py: 8 }} maxWidth="md">
           <Grid container spacing={4}>
-            {buildings.map((item) => {
+            {temp_buildings.map((item) => {
               return (
                 <Grid item xs={12} sm={6} md={4}>
                   <RecordCard
