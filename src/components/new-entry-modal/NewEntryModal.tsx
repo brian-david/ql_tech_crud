@@ -67,7 +67,7 @@ export default function NewEntryModal(props: NewEntryModalProps) {
             />
           </Grid>
           <Button variant="contained" color="success">
-            Success
+            Add
           </Button>
         </Grid>
       </Box>
