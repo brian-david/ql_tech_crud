@@ -24,7 +24,7 @@ export default function RecordCard(props: any) {
 
   return (
     <Card
-      sx={{ maxWidth: 345 }}
+      sx={{ height: "100%", display: "flex", flexDirection: "column" }}
       onClick={() => props.setSelected(props.building)}
     >
       <CardActionArea>
